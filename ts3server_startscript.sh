@@ -7,32 +7,7 @@ D1=$(readlink -f "$0")
 BINARYPATH="$(dirname "${D1}")"
 cd "${BINARYPATH}"
 LIBRARYPATH="$(pwd)"
-
-
-if [ -e ts3server_linux_x86 ]; then
-	if [ -z "`uname | grep Linux`" -o ! -z "`uname -m | grep 64`" ]; then
-                echo "Do you have the right TS3 Server package for your system? You have: `uname` `uname -m`, not Linux i386."
-        fi
-        BINARYNAME="ts3server_linux_x86"
-elif [ -e ts3server_linux_amd64 ]; then
-        if [ -z "`uname | grep Linux`" -o -z "`uname -m | grep 64`" ]; then
-                echo "Do you have the right TS3 Server package for your system? You have: `uname` `uname -m`, not Linux x86_64."
-        fi
-        BINARYNAME="ts3server_linux_amd64"
-elif [ -e ts3server_freebsd_x86 ]; then
-        if [ -z "`uname | grep FreeBSD`" -o ! -z "`uname -m | grep 64`" ]; then
-                echo "Do you have the right TS3 Server package for your system? You have: `uname` `uname -m`, not FreeBSD i386."
-        fi
-        BINARYNAME="ts3server_freebsd_x86"
-elif [ -e ts3server_freebsd_amd64 ]; then
-        if [ -z "`uname | grep FreeBSD`" -o -z "`uname -m | grep 64`" ]; then
-                echo "Do you have the right TS3 Server package for your system? You have: `uname` `uname -m`, not FreeBSD amd64."
-        fi
-        BINARYNAME="ts3server_freebsd_amd64"
-else
-	echo "Could not locate binary file, aborting"
-	exit 5
-fi
+BINARYNAME="ts3server"
 
 case "$1" in
 	start)
@@ -71,12 +46,7 @@ case "$1" in
 					echo "TeamSpeak 3 server could not start"
 				else
 					echo $PID > ts3server.pid
-					echo " "
-					echo "###########################################"
-					echo "#     Scripting by 'Supervisor'           #"
-					echo "#     Crack by 'MESMERiZE'                #"
-					echo "#     Join our community at r4p3.net      #"
-					echo "###########################################"
+					echo "TeamSpeak 3 server started, for details please view the log file"
 				fi
 			else
 				echo "${BINARNAME} is not exectuable, cannot start TeamSpeak 3 server"
@@ -89,12 +59,6 @@ case "$1" in
 	stop)
 		if [ -e ts3server.pid ]; then
 			echo -n "Stopping the TeamSpeak 3 server"
-			echo " "
-			echo "###########################################"
-			echo "#     Scripting by 'Supervisor'           #"
-			echo "#     Crack by 'MESMERiZE'                #"
-			echo "#     Join our community at r4p3.net      #"
-			echo "###########################################"
 			if ( kill -TERM $(cat ts3server.pid) 2> /dev/null ); then
 				c=1
 				while [ "$c" -le 300 ]; do

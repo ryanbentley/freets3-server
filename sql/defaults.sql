@@ -1,8 +1,6 @@
 -- serverinstance properties
 insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_filetransfer_port", "30033");
 insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_guest_serverquery_group", "1");
-insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_max_download_total_bandwidth", "-1");
-insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_max_upload_total_bandwidth", "-1");
 insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_template_serveradmin_group", "3");
 insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_template_serverdefault_group", "5");
 insert into instance_properties (server_id, id, ident, value) values (0, 0, "serverinstance_template_channeladmin_group", "1");
@@ -18,8 +16,6 @@ insert into bindings (ip, type) values ("0.0.0.0", 2);
 insert into server_properties (server_id, id, ident, value) values (0, 0, "virtualserver_name", "TeamSpeak ]I[ Server");
 insert into server_properties (server_id, id, ident, value) values (0, 0, "virtualserver_welcomemessage", "Welcome to TeamSpeak, check [URL]www.teamspeak.com[/URL] for latest information");
 insert into server_properties (server_id, id, ident, value) values (0, 0, "virtualserver_maxclients", "32");
-insert into server_properties (server_id, id, ident, value) values (0, 0, "virtualserver_max_download_total_bandwidth", "-1");
-insert into server_properties (server_id, id, ident, value) values (0, 0, "virtualserver_max_upload_total_bandwidth", "-1");
 
 -- default servergroups
 insert into groups_server (server_id, name, type) values (0, "Guest Server Query", 2);
